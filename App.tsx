@@ -2,11 +2,10 @@
 import React from 'react';
 import { Header } from './components/Header';
 import { Hero } from './components/Hero';
-import { About } from './components/About';
+import { StoreMarquee } from './components/StoreMarquee';
 import { Services } from './components/Services';
 import { Workflows } from './components/Workflows';
 import { KlaviyoFlows } from './components/KlaviyoFlows';
-import { StoreMarquee } from './components/StoreMarquee';
 import { Testimonials } from './components/Testimonials';
 import { Contact } from './components/Contact';
 import { Footer } from './components/Footer';
@@ -18,7 +17,6 @@ const App: React.FC = () => {
       <main>
         <Hero />
         <StoreMarquee />
-        <About />
         <Services />
         <Workflows />
         <KlaviyoFlows />

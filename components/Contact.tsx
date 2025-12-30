@@ -33,10 +33,10 @@ export const Contact: React.FC = () => {
       const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
       const response = await ai.models.generateContent({
         model: "gemini-3-flash-preview",
-        contents: `As a senior technical systems architect, provide a brief (3-4 sentence) professional analysis and suggested high-level tech stack for this project scope: "${formData.scope}"`,
+        contents: `As a senior technical systems architect for Ola'sTech, provide a professional, highly specific technical analysis and suggested high-level tech stack (e.g., n8n, VAPI, Shopify Liquid, etc.) for this project scope: "${formData.scope}". Keep it to 3-4 impactful sentences.`,
         config: {
-          temperature: 0.7,
-          maxOutputTokens: 250,
+          temperature: 0.4,
+          thinkingConfig: { thinkingBudget: 4000 }
         },
       });
 

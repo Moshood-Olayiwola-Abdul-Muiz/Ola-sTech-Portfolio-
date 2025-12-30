@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 
 export const Header: React.FC = () => {
   const [isScrolled, setIsScrolled] = useState(false);
+  const [logoError, setLogoError] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
@@ -16,9 +17,18 @@ export const Header: React.FC = () => {
     <header className={`fixed top-0 w-full z-[100] transition-all duration-500 ${isScrolled ? 'bg-zinc-950/90 backdrop-blur-xl border-b border-zinc-800/50 py-4 shadow-2xl' : 'bg-transparent py-8'}`}>
       <div className="container mx-auto px-4 md:px-6 flex justify-between items-center">
         {/* LOGO SECTION */}
-        <a href="#home" className="flex items-center space-x-3 md:space-x-4 flex-shrink-0">
-          <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-blue-600 font-black text-base md:text-lg shadow-xl">
-            OT
+        <a href="#home" className="flex items-center space-x-3 md:space-x-4 flex-shrink-0 group">
+          <div className="w-10 h-10 md:w-12 md:h-12 rounded-xl bg-zinc-900 border border-zinc-800 overflow-hidden flex items-center justify-center shadow-xl group-hover:border-blue-500/50 transition-colors">
+            {logoError ? (
+              <span className="text-blue-600 font-black text-sm md:text-base">OT</span>
+            ) : (
+              <img 
+                src="logo.png" 
+                alt="Ola'sTech Logo" 
+                className="w-full h-full object-cover p-1"
+                onError={() => setLogoError(true)}
+              />
+            )}
           </div>
           <div className="flex flex-col">
              <span className="text-base md:text-xl font-black tracking-tighter text-white leading-none">OLA'S<span className="text-blue-600">TECH</span></span>
