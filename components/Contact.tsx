@@ -1,4 +1,6 @@
+
 import React, { useState } from 'react';
+import { GoogleGenAI } from "@google/genai";
 
 export const Contact: React.FC = () => {
   const [formData, setFormData] = useState({
@@ -9,16 +11,47 @@ export const Contact: React.FC = () => {
     scope: ''
   });
   const [error, setError] = useState('');
+  const [isAnalyzing, setIsAnalyzing] = useState(false);
+  const [aiAnalysis, setAiAnalysis] = useState<string | null>(null);
 
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setFormData({ ...formData, phone: e.target.value });
     if (error) setError('');
   };
 
+  const analyzeWithAI = async () => {
+    if (!formData.scope || formData.scope.length < 10) {
+      setError("Please provide a bit more detail in the project scope first.");
+      return;
+    }
+
+    setIsAnalyzing(true);
+    setAiAnalysis(null);
+    setError('');
+
+    try {
+      const ai = new GoogleGenAI({ apiKey: process.env.API_KEY || '' });
+      const response = await ai.models.generateContent({
+        model: "gemini-3-flash-preview",
+        contents: `As a senior technical systems architect, provide a brief (3-4 sentence) professional analysis and suggested high-level tech stack for this project scope: "${formData.scope}"`,
+        config: {
+          temperature: 0.7,
+          maxOutputTokens: 250,
+        },
+      });
+
+      setAiAnalysis(response.text || "Analysis complete. Ready for deployment.");
+    } catch (err) {
+      console.error("AI Analysis failed:", err);
+      setError("AI Analysis unavailable. Proceed with direct contact.");
+    } finally {
+      setIsAnalyzing(false);
+    }
+  };
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     
-    // Validation for country code
     if (!formData.phone.startsWith('+')) {
       setError('Error: Please include your country code (e.g., +1, +44, +234).');
       return;
@@ -30,18 +63,13 @@ Name: ${formData.firstName} ${formData.lastName}
 Email: ${formData.email}
 Phone: ${formData.phone}
 Scope: ${formData.scope}
+${aiAnalysis ? `\n*AI Initial Assessment:* \n${aiAnalysis}` : ''}
     `.trim();
 
-    // Redirection to WhatsApp
     const whatsappUrl = `https://wa.me/15814657574?text=${encodeURIComponent(message)}`;
-    
-    // Redirection to Email (mailto)
     const mailtoUrl = `mailto:moshoodolayiwola111@gmail.com?subject=New Project Inquiry&body=${encodeURIComponent(message)}`;
 
-    // Open WhatsApp in new tab
     window.open(whatsappUrl, '_blank');
-    
-    // Fallback or secondary: open email
     window.location.href = mailtoUrl;
   };
 
@@ -50,8 +78,8 @@ Scope: ${formData.scope}
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-zinc-800 to-transparent"></div>
       
       <div className="container mx-auto max-w-6xl">
-        <div className="grid lg:grid-cols-2 gap-24 items-center">
-          <div>
+        <div className="grid lg:grid-cols-2 gap-24 items-start">
+          <div className="sticky top-32">
             <h2 className="text-xs font-black tracking-[0.6em] text-blue-500 uppercase mb-8">System Deployment</h2>
             <h3 className="text-5xl md:text-8xl font-black mb-10 text-white tracking-tighter leading-[0.85]">Let's Build <br /><span className="text-blue-500">Robustness.</span></h3>
             <p className="text-zinc-500 text-xl leading-relaxed mb-12 font-medium">
@@ -107,7 +135,6 @@ Scope: ${formData.scope}
                     onChange={handlePhoneChange}
                     required 
                   />
-                  {error && <p className="text-[9px] text-red-500 mt-2 ml-2 font-black uppercase tracking-widest">{error}</p>}
                 </div>
                 <div>
                   <label className="block text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-3 ml-2">Email Address</label>
@@ -122,8 +149,28 @@ Scope: ${formData.scope}
                 </div>
               </div>
 
-              <div>
-                <label className="block text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em] mb-3 ml-2">Project Scope</label>
+              <div className="relative">
+                <div className="flex justify-between items-center mb-3 ml-2">
+                  <label className="block text-[10px] font-black text-zinc-500 uppercase tracking-[0.2em]">Project Scope</label>
+                  <button 
+                    type="button"
+                    onClick={analyzeWithAI}
+                    disabled={isAnalyzing}
+                    className="text-[9px] font-black text-blue-500 uppercase tracking-widest hover:text-blue-400 disabled:text-zinc-700 transition-colors flex items-center space-x-2"
+                  >
+                    {isAnalyzing ? (
+                      <>
+                        <div className="w-2 h-2 bg-blue-500 rounded-full animate-ping"></div>
+                        <span>Processing Logic...</span>
+                      </>
+                    ) : (
+                      <>
+                        <svg className="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        <span>Analyze with AI</span>
+                      </>
+                    )}
+                  </button>
+                </div>
                 <textarea 
                   rows={5} 
                   placeholder="Describe your operational bottlenecks..." 
@@ -132,6 +179,18 @@ Scope: ${formData.scope}
                   onChange={(e) => setFormData({...formData, scope: e.target.value})}
                   required
                 ></textarea>
+
+                {aiAnalysis && (
+                  <div className="mt-6 p-6 bg-blue-500/5 border border-blue-500/20 rounded-2xl animate-reveal-up">
+                    <div className="flex items-center space-x-2 mb-3">
+                      <div className="w-1.5 h-1.5 bg-blue-500 rounded-full"></div>
+                      <span className="text-[9px] font-black text-blue-500 uppercase tracking-widest">Architectural Assessment</span>
+                    </div>
+                    <p className="text-zinc-300 text-sm leading-relaxed font-medium">{aiAnalysis}</p>
+                  </div>
+                )}
+                
+                {error && <p className="text-[9px] text-red-500 mt-4 ml-2 font-black uppercase tracking-widest">{error}</p>}
               </div>
 
               <button type="submit" className="w-full bg-blue-600 hover:bg-blue-500 text-white font-black py-6 rounded-2xl transition-all tracking-[0.3em] uppercase text-xs shadow-xl shadow-blue-500/10 active:scale-95">

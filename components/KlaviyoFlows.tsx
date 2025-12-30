@@ -3,81 +3,53 @@ import React from 'react';
 
 const flows = [
   {
-    title: "Welcome Series Architecture",
+    title: "Welcome Series Logic",
     store: "Look At Me Streetwear",
-    description: "Multi-step welcome sequence designed for high-end streetwear. Focuses on brand story, exclusive drops, and conversion optimization.",
+    description: "Multi-step welcome sequence designed for high-end streetwear. Focuses on brand storytelling and first-purchase logic.",
     metrics: "24% Open Rate Lift",
-    type: "Email Design & Logic",
-    image: "https://images.unsplash.com/photo-1559136555-9303baea8ebd?auto=format&fit=crop&q=80&w=800"
-  },
-  {
-    title: "Behavioral Retention Popups",
-    store: "Unusual Decor / Streetwear",
-    description: "High-converting acquisition forms designed to capture lead intent while maintaining luxury aesthetic.",
-    metrics: "8.4% Opt-in Rate",
-    type: "Lead Acquisition",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+    type: "Email Logic",
+    image: "https://images.unsplash.com/photo-1558769132-cb1aea458c5e?auto=format&fit=crop&q=80&w=800"
   },
   {
     title: "Post-Purchase Recovery",
     store: "Stilwerk Partnership",
-    description: "Automated retention cycles that trigger based on customer lifetime value and past purchase behavior to drive repeat revenue.",
+    description: "Automated retention cycles that trigger based on customer lifetime value and behavioral purchase data.",
     metrics: "12% CR Increase",
     type: "Retention Flow",
-    image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=800"
+    image: "https://images.unsplash.com/photo-1563986768494-4dee2763ff3f?auto=format&fit=crop&q=80&w=800"
   }
 ];
 
 export const KlaviyoFlows: React.FC = () => {
   return (
-    <section id="retention" className="py-24 bg-zinc-950 px-6">
-      {/* Klaviyo Section Banner */}
-      <div className="container mx-auto max-w-6xl mb-24">
-        <div className="relative rounded-[2.5rem] overflow-hidden group min-h-[400px] flex items-center justify-center">
-          <div className="absolute inset-0 z-0">
-            <img 
-              src="https://images.unsplash.com/photo-1557426282-08695bd38ceb?auto=format&fit=crop&q=80&w=1600" 
-              alt="Klaviyo Systems" 
-              className="w-full h-full object-cover grayscale opacity-25 group-hover:scale-105 transition-transform duration-1000"
-            />
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-zinc-950/80"></div>
-          </div>
-          <div className="relative z-10 p-12 text-center max-w-3xl">
-            <h2 className="text-xs font-black tracking-[0.5em] text-blue-500 uppercase mb-6">Retention Ecosystems</h2>
-            <h3 className="text-4xl md:text-6xl font-black text-white tracking-tighter mb-8 leading-tight">Data-Driven <br /> Retention <span className="text-zinc-500">Engines.</span></h3>
-            <div className="inline-flex items-center space-x-3 bg-zinc-900/90 border border-zinc-800 px-6 py-3 rounded-full backdrop-blur-xl">
-               <span className="h-2.5 w-2.5 bg-green-500 rounded-full animate-pulse"></span>
-               <span className="text-[10px] font-black text-zinc-300 uppercase tracking-[0.2em]">Certified Klaviyo Partner</span>
-            </div>
-          </div>
-        </div>
+    <section id="retention" className="py-32 bg-zinc-950 px-6">
+      <div className="container mx-auto max-w-6xl mb-24 text-center">
+        <h2 className="text-xs font-black tracking-[0.5em] text-blue-500 uppercase mb-6">Retention Ecosystems</h2>
+        <h3 className="text-5xl md:text-8xl font-black text-white tracking-tighter mb-8 leading-none">Data-Driven <br /> Retention.</h3>
       </div>
 
-      <div className="container mx-auto max-w-6xl">
-        <div className="grid md:grid-cols-3 gap-8">
+      <div className="container mx-auto max-w-5xl">
+        <div className="grid md:grid-cols-2 gap-12">
           {flows.map((flow, idx) => (
-            <div key={idx} className="group flex flex-col h-full bg-zinc-900/20 border border-zinc-800/60 rounded-[2rem] p-8 hover:border-blue-500/30 transition-all overflow-hidden">
-              <a href="#services" className="relative block aspect-[4/5] rounded-2xl overflow-hidden mb-8 border border-zinc-800/50">
+            <div key={idx} className="group bg-zinc-900/10 border border-zinc-800 rounded-[3rem] p-10 hover:border-blue-500/50 transition-all hover:bg-zinc-900/20 shadow-2xl">
+              <div className="h-64 rounded-[2rem] overflow-hidden mb-10 border border-zinc-800">
                 <img 
                   src={flow.image} 
                   alt={flow.title} 
-                  className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-80 group-hover:scale-110 transition-all duration-700"
+                  className="w-full h-full object-cover grayscale opacity-40 group-hover:opacity-100 group-hover:grayscale-0 transition-all duration-700 scale-110 group-hover:scale-100"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-zinc-950 via-transparent to-transparent opacity-90"></div>
-                <div className="absolute bottom-6 left-6 right-6">
-                  <p className="text-[10px] font-black text-blue-500 uppercase tracking-widest mb-1">{flow.type}</p>
-                  <p className="text-xs text-zinc-400 font-bold">Partner: {flow.store}</p>
+              </div>
+              <h4 className="text-3xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors tracking-tight">{flow.title}</h4>
+              <p className="text-zinc-500 text-lg leading-relaxed mb-10">{flow.description}</p>
+              <div className="pt-10 border-t border-zinc-800 flex justify-between items-center">
+                <div>
+                   <p className="text-[10px] font-black text-zinc-600 uppercase tracking-widest mb-1">Key Performance</p>
+                   <p className="text-2xl font-black text-blue-500">{flow.metrics}</p>
                 </div>
-              </a>
-              
-              <h4 className="text-xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors">{flow.title}</h4>
-              <p className="text-zinc-500 text-sm leading-relaxed mb-8 flex-grow">
-                {flow.description}
-              </p>
-              
-              <div className="pt-8 border-t border-zinc-800/50 flex items-center justify-between">
-                <span className="text-[10px] font-black text-zinc-600 uppercase tracking-[0.2em]">Key Metric</span>
-                <span className="text-lg font-black text-blue-500">{flow.metrics}</span>
+                <div className="text-right">
+                   <p className="text-[10px] font-black text-zinc-600 uppercase tracking-widest mb-1">Partner</p>
+                   <p className="text-white font-bold">{flow.store}</p>
+                </div>
               </div>
             </div>
           ))}

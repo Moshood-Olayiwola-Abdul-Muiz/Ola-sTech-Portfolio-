@@ -1,3 +1,4 @@
+
 import React from 'react';
 
 export const Footer: React.FC = () => {
@@ -49,7 +50,7 @@ export const Footer: React.FC = () => {
 
         <div className="pt-12 border-t border-zinc-900 flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-zinc-600 text-[10px] tracking-[0.3em] font-black uppercase">
-            © {new Date().getFullYear()} OLA’S TECH. ALL RIGHTS RESERVED.
+            © 2026 OLA’S TECH. ALL RIGHTS RESERVED.
           </p>
           <div className="flex space-x-6">
             <span className="text-zinc-700 text-[9px] uppercase tracking-[0.2em] font-black">Simplicity over complexity</span>

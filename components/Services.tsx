@@ -1,69 +1,34 @@
+
 import React from 'react';
 
 const coreServices = [
   {
-    id: "ai-agents",
-    title: "AI Sales & Support Agents",
-    desc: "Intelligent Shopify & CRM bots that handle product search, intent analysis, and customer recovery automatically.",
-    tech: ["Gemini AI", "Shopify API", "Re:amaze", "n8n"],
-    icon: (
-      <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
-      </svg>
-    ),
-    gallery: [
-      { url: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?auto=format&fit=crop&q=80&w=400", title: "Active API Nodes" },
-      { url: "https://images.unsplash.com/photo-1531482615713-2afd69097998?auto=format&fit=crop&q=80&w=400", title: "Integration Dashboard" },
-      { url: "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?auto=format&fit=crop&q=80&w=400", title: "Flow Logic Map" }
-    ]
+    number: "01",
+    title: "AI Sales & Shopify Agents",
+    desc: "Intelligent Shopify & CRM bots that handle product search and customer recovery automatically using Gemini AI.",
+    tech: ["Gemini AI", "Shopify API", "n8n"],
+    image: "https://images.unsplash.com/photo-1614064641938-3bbee52942c7?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: "hr-automation",
-    title: "HR & Recruitment Automation",
-    desc: "End-to-end candidate screening systems that extract data from resumes and automate hiring communications.",
-    tech: ["PDF Parsing", "AI Scoring", "Outlook", "Sheets"],
-    icon: (
-      <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
-      </svg>
-    ),
-    gallery: [
-      { url: "https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&q=80&w=400", title: "HR Portal Logic" },
-      { url: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?auto=format&fit=crop&q=80&w=400", title: "CV Analysis Engine" },
-      { url: "https://images.unsplash.com/photo-1507679799987-c73779587ccf?auto=format&fit=crop&q=80&w=400", title: "Workflow Screen" }
-    ]
+    number: "02",
+    title: "HR & Recruitment Pipelines",
+    desc: "End-to-end candidate screening systems that extract data from resumes and automate hiring flows via PDF parsing.",
+    tech: ["PDF Parsing", "AI Scoring", "Outlook"],
+    image: "https://images.unsplash.com/photo-1454165833767-1314d7968593?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: "media-orchestration",
-    title: "Content & Media Orchestration",
+    number: "03",
+    title: "Media Orchestration",
     desc: "Router-based distribution systems that sync content across social networks while logging engagement data.",
-    tech: ["API Routers", "Instagram Graph", "LinkedIn API", "Pinterest"],
-    icon: (
-      <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-      </svg>
-    ),
-    gallery: [
-      { url: "https://images.unsplash.com/photo-1611162617474-5b21e879e113?auto=format&fit=crop&q=80&w=400", title: "Social Sync Graph" },
-      { url: "https://images.unsplash.com/photo-1432888498266-38ffec3eaf0a?auto=format&fit=crop&q=80&w=400", title: "Syndication Hub" },
-      { url: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=400", title: "Metrics Router" }
-    ]
+    tech: ["API Routers", "Instagram Graph", "LinkedIn"],
+    image: "https://images.unsplash.com/photo-1551288049-bbbda536339a?auto=format&fit=crop&q=80&w=800"
   },
   {
-    id: "integrations",
-    title: "Integrations & Voice AI",
-    desc: "Connecting VAPI and Webhooks to backend databases for low-latency voice-driven business operations.",
-    tech: ["VAPI", "Webhooks", "JSON Parsing", "DB Ops"],
-    icon: (
-      <svg className="w-6 h-6 text-blue-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 11a7 7 0 01-7 7m0 0a7 7 0 01-7-7m7 7v4m0 0H8m4 0h4m-4-8a3 3 0 01-3-3V5a3 3 0 116 0v6a3 3 0 01-3 3z" />
-      </svg>
-    ),
-    gallery: [
-      { url: "https://images.unsplash.com/photo-1597733336794-12d05021d510?auto=format&fit=crop&q=80&w=400", title: "Server Nodes" },
-      { url: "https://images.unsplash.com/photo-1542831371-29b0f74f9713?auto=format&fit=crop&q=80&w=400", title: "Endpoint Security" },
-      { url: "https://images.unsplash.com/photo-1516116216624-53e697fedbea?auto=format&fit=crop&q=80&w=400", title: "Voice API Logic" }
-    ]
+    number: "04",
+    title: "Cloud & Voice Architecture",
+    desc: "Connecting VAPI and Webhooks to backend databases for low-latency business operations and voice AI.",
+    tech: ["VAPI", "Webhooks", "Cloud Ops"],
+    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800"
   }
 ];
 
@@ -71,59 +36,43 @@ export const Services: React.FC = () => {
   return (
     <section id="services" className="py-32 px-6 bg-zinc-950 border-t border-zinc-900/50">
       <div className="container mx-auto max-w-6xl">
-        <div className="mb-20">
+        <div className="mb-24 text-left border-l-4 border-blue-600 pl-8">
           <h2 className="text-xs font-black tracking-[0.5em] text-blue-500 uppercase mb-6">Service Architecture</h2>
-          <h3 className="text-4xl md:text-6xl font-black text-white tracking-tighter">Scalable Business Logic.</h3>
+          <h3 className="text-5xl md:text-8xl font-black text-white tracking-tighter">Scalable Logic.</h3>
         </div>
 
-        <div className="grid md:grid-cols-1 lg:grid-cols-2 gap-12 mb-24">
-          {coreServices.map((s) => (
+        <div className="space-y-8">
+          {coreServices.map((s, idx) => (
             <div 
-              key={s.id} 
-              className="bg-zinc-900/30 p-8 md:p-12 rounded-[2.5rem] border border-zinc-800/60 hover:border-blue-500/30 transition-all duration-500 group relative overflow-hidden"
+              key={idx} 
+              className="group relative overflow-hidden bg-zinc-900/10 border border-zinc-900/50 rounded-[2.5rem] p-8 md:p-12 transition-all hover:bg-zinc-900/30 hover:border-blue-500/30 flex flex-col md:flex-row items-center gap-12"
             >
-              <div className="flex flex-col md:flex-row gap-10">
-                <div className="md:w-1/2">
-                  <div className="mb-8 p-4 bg-zinc-950 rounded-2xl inline-block group-hover:bg-blue-500/10 transition-colors border border-zinc-800">
-                    {s.icon}
-                  </div>
-                  <h4 className="text-2xl md:text-3xl font-bold mb-4 text-white group-hover:text-blue-400 transition-colors tracking-tight">
-                    {s.title}
-                  </h4>
-                  <p className="text-zinc-500 text-sm md:text-base mb-8 leading-relaxed font-medium">
-                    {s.desc}
-                  </p>
-                  <div className="flex flex-wrap gap-2 mb-8">
-                    {s.tech.map((t) => (
-                      <span key={t} className="text-[9px] px-3 py-1.5 rounded-lg bg-zinc-950 text-zinc-400 border border-zinc-800 font-bold uppercase tracking-widest">
-                        {t}
-                      </span>
-                    ))}
-                  </div>
+              <div className="flex-shrink-0 w-24 md:w-32 h-24 md:h-32 rounded-3xl bg-zinc-900 border border-zinc-800 flex items-center justify-center text-4xl font-black text-blue-600 group-hover:scale-110 transition-transform">
+                {s.number}
+              </div>
+              
+              <div className="flex-grow">
+                <h4 className="text-3xl md:text-4xl font-bold mb-4 text-white group-hover:text-blue-500 transition-colors tracking-tight">
+                  {s.title}
+                </h4>
+                <p className="text-zinc-500 mb-8 leading-relaxed max-w-xl">
+                  {s.desc}
+                </p>
+                <div className="flex flex-wrap gap-3">
+                  {s.tech.map((t) => (
+                    <span key={t} className="text-[10px] px-4 py-2 rounded-xl bg-zinc-950 text-zinc-400 border border-zinc-800 font-bold uppercase tracking-widest">
+                      {t}
+                    </span>
+                  ))}
                 </div>
+              </div>
 
-                <div className="md:w-1/2">
-                  <div className="grid grid-cols-2 gap-3 h-full max-h-[300px]">
-                    {s.gallery.map((img, i) => (
-                      <div 
-                        key={i} 
-                        className={`relative rounded-2xl overflow-hidden border border-zinc-800 group/img cursor-pointer ${i === 0 ? 'col-span-2 row-span-1 h-32' : 'h-32'}`}
-                      >
-                        <img 
-                          src={img.url} 
-                          alt={img.title} 
-                          className="w-full h-full object-cover transition-all duration-700 group-hover/img:scale-110 opacity-100"
-                        />
-                        <div className="absolute inset-0 bg-gradient-to-t from-zinc-950/80 via-transparent to-transparent"></div>
-                        <div className="absolute bottom-2 left-3">
-                          <span className="text-[8px] font-black text-white uppercase tracking-widest bg-zinc-900/80 px-2 py-1 rounded">
-                            {img.title}
-                          </span>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
-                </div>
+              <div className="hidden lg:block w-72 h-48 rounded-[2rem] overflow-hidden border border-zinc-800/50">
+                <img 
+                  src={s.image} 
+                  alt={s.title} 
+                  className="w-full h-full object-cover grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-700"
+                />
               </div>
             </div>
           ))}
